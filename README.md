@@ -1,2 +1,2 @@
 # RNA-secondary-prediction
-Projekt z przedmiotu Bioinformatyka na WMiI UJ 2016/2017
+Project for the course "Bioinformatyka" @ WMiI UJ 2016/2017.
