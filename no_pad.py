@@ -1,10 +1,13 @@
-import numpy as np
+#import numpy as np
 from keras import backend as K
+from keras.backend.common import _EPSILON
 import theano.tensor as T
 
 def categorical_crossentropy_no_pad(y_true, y_pred):
     original_pad = y_true.shape[1]
     loss = K.zeros_like(y_true[:, :, 0])
+   
+    y_pred = K.clip(y_pred, _EPSILON, 1-_EPSILON)
    
     y_true = y_true.reshape((-1, y_true.shape[-1]))
     y_pred = y_pred.reshape((-1, y_pred.shape[-1]))
@@ -17,20 +20,13 @@ def categorical_crossentropy_no_pad(y_true, y_pred):
     return loss    
 
 def categorical_accuracy_no_pad(y_true, y_pred):
-    assert(y_true.ndim == 3)
-    assert(y_pred.ndim == 3)
+    n = y_true.shape[-1]
+    y_true = y_true.reshape((-1, n))
+    y_pred = y_pred.reshape((-1, n))
     
-    y_true = y_true.reshape((-1, y_true.shape[-1]))
-    y_pred = y_pred.reshape((-1, y_true.shape[-1]))
-    assert(y_true.ndim == 2)
-    assert(y_pred.ndim == 2)
-    
-    zero_indices = K.equal(K.sum(y_true, axis=1), 0)
-    assert zero_indices.ndim == 1, zero_indices.ndim
+    nonzero_indices = K.not_equal(K.sum(y_true, axis=1), 0)
    
     aa = K.argmax(y_true, axis=1)
     bb = K.argmax(y_pred, axis=1)
 
-    no_of_padding = zero_indices.sum()
-    
-    return (K.sum(K.equal(aa, bb)) - no_of_padding) / (y_true.shape[0] - no_of_padding)
+    return K.sum(K.equal(aa, bb) * nonzero_indices)  / (nonzero_indices.sum())
