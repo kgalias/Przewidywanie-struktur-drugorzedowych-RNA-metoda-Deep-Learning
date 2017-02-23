@@ -1,11 +1,6 @@
 import pickle
 import matplotlib.pyplot as plt
-'''
-hist_conv1d.pickle
-hist_conv1d_2x.pickle
-hist_conv1d_dropout.pickle
-hist_conv1d_2x_dropout.pickle
-'''
+
 with open('hist_conv1d.pickle', 'rb') as handle:
     hist_conv1d = pickle.load(handle)
 with open('hist_conv1d_2x.pickle', 'rb') as handle:
@@ -13,7 +8,7 @@ with open('hist_conv1d_2x.pickle', 'rb') as handle:
 with open('hist_conv1d_dropout.pickle', 'rb') as handle:
     hist_conv1d_dropout = pickle.load(handle)
 #with open('hist_conv1d_2x_dropout.pickle', 'rb') as handle:
-#    hist_oh_conv1d = pickle.load(handle)
+#    hist_conv1d_2x_dropout = pickle.load(handle)
     
 # summarize history for accuracy for model one
 plt.plot(hist_conv1d['categorical_accuracy_no_pad'])
@@ -86,7 +81,7 @@ plt.plot(hist_conv1d_dropout['val_loss'])
 plt.title('valuation loss comparison')
 plt.ylabel('loss')
 plt.xlabel('epoch')
-plt.legend(['conv', '2 conv', ' conv w/ dropout'], loc='upper left')
+plt.legend(['conv', '2 conv', 'conv w/ dropout'], loc='upper left')
 plt.show()
 
 # summarize history for accuracy for model three
@@ -96,5 +91,5 @@ plt.plot(hist_conv1d_dropout['val_categorical_accuracy_no_pad'])
 plt.title('valuation accuracy comparison')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
-plt.legend(['conv', '2 conv', ' conv w/ dropout'], loc='upper left')
+plt.legend(['conv', '2 conv', 'conv w/ dropout'], loc='upper left')
 plt.show()
