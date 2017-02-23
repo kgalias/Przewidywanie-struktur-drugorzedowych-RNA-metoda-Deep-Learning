@@ -2,8 +2,11 @@
 
 ###Prerequisites
 Python (e.g. from [Anaconda](https://www.continuum.io/downloads))  
-Keras (e.g. using ```conda install -c anaconda keras=1.1.1```)
-
+Keras and dependencies (e.g. using ```conda install -c anaconda keras=1.1.1```)  
+Theano (see [Installing Theano](http://deeplearning.net/software/theano/install.html))
+###How to use
+```python prot_2d.py``` trains the nets and saves the history. ```python model_compare.py``` produces the graphs.
+###Comparisons for some simple models
 ![](https://github.com/kgalias/protein-2d-prediction/blob/master/model_compare/conv1d_acc.png)
 ![](https://github.com/kgalias/protein-2d-prediction/blob/master/model_compare/conv1d_loss.png)
 
