@@ -1,6 +1,5 @@
 import pickle
-from ss_parse import prepare_data
-from generators import generator
+from data_utils import prepare_data, generator
 from model_utils import create_model
 from keras.callbacks import EarlyStopping
    
