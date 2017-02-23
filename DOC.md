@@ -1,5 +1,5 @@
 ###Description
-Uses keras to train some models (e.g. neural network with one or two convolutional layers, possibly with dropout) for protein secondary structure prediction on [data](http://www.rcsb.org/pdb/static.do?p=download/http/index.html) from PDB. 
+Uses keras to train some models (e.g. a neural network with one or two convolutional layers, possibly with dropout) for protein secondary structure prediction on [data](http://www.rcsb.org/pdb/static.do?p=download/http/index.html) from PDB. 
 ###Prerequisites
 Python (e.g. from [Anaconda](https://www.continuum.io/downloads))  
 Keras and dependencies (e.g. using ```conda install -c anaconda keras=1.1.1```)  
