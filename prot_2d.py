@@ -8,14 +8,8 @@ nb_structure = 8
 batch_size = 32
 nb_epoch = 16
 
-prepare_data()
-
-# load in protein data 
-with open('sequences.pickle', 'rb') as handle:
-    sequences = pickle.load(handle)
-# load in secondary structure data    
-with open('structures.pickle', 'rb') as handle:
-    structures = pickle.load(handle)
+# load in data
+sequences, structures = prepare_data()
 
 # establish length of longest sequence
 max_len = max([len(seq) for seq in sequences])

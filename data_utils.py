@@ -56,15 +56,11 @@ def ss_parser(handle):
         if not line:
             return
 
-# saves protein and structure data in separate pickle files
+# return protein and structure data (from ss.txt)
 def prepare_data():
     with open("ss.txt") as handle:
         records = list(ss_parser(handle))
-        sequences = [seq.replace("U", "X").replace("B", "X").replace("Z", "X").replace("O", "X") for seq in records[0::2]]
-        structures = records[1::2]
+    sequences = [seq.replace("U", "X").replace("B", "X").replace("Z", "X").replace("O", "X") for seq in records[0::2]]
+    structures = records[1::2]
 
-    with open('sequences.pickle', 'wb') as handle:
-        pickle.dump(sequences, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-    with open('structures.pickle', 'wb') as handle:
-        pickle.dump(structures, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    return sequences, structures
