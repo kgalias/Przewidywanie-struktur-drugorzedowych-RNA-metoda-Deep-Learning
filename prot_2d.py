@@ -1,12 +1,15 @@
 import pickle
+from ss_parse import prepare_data
 from generators import generator
-from create_model import create_model
+from model_utils import create_model
 from keras.callbacks import EarlyStopping
    
 nb_aminoacid = 21
 nb_structure = 8
 batch_size = 32
 nb_epoch = 16
+
+prepare_data()
 
 # load in protein data 
 with open('sequences.pickle', 'rb') as handle:
